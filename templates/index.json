@@ -1,0 +1,20 @@
+﻿{
+  "sections": {
+    "hero": { "type": "hero" },
+    "categories": { "type": "featured-categories" },
+    "products": { "type": "featured-products" },
+    "about": { "type": "about" },
+    "why": { "type": "why-choose-us" },
+    "testimonials": { "type": "testimonials" },
+    "contact": { "type": "contact" }
+  },
+  "order": [
+    "hero",
+    "categories",
+    "products",
+    "about",
+    "why",
+    "testimonials",
+    "contact"
+  ]
+}

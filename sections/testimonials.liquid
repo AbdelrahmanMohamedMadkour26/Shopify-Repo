@@ -1,0 +1,104 @@
+﻿<section class="section testimonials">
+  <div class="section-header">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.subtext }}</p>
+  </div>
+  <div class="testimonial-grid">
+    {% for block in section.blocks %}
+      <article class="testimonial-card" {{ block.shopify_attributes }}>
+        {% if block.settings.avatar %}
+          <img src="{{ block.settings.avatar | image_url: width: 120 }}" alt="{{ block.settings.name }}">
+        {% else %}
+          {{ 'avatar' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+        <div>
+          <h4>{{ block.settings.name }}</h4>
+          <p>{{ block.settings.text }}</p>
+          <span>{{ block.settings.location }}</span>
+        </div>
+      </article>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Our Customers Say"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Authentic stories from coffee enthusiasts."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "avatar",
+          "label": "Avatar"
+        },
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Name",
+          "default": "Leila K."
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Testimonial",
+          "default": "The espresso machine feels like a boutique café at home. The build and crema are perfect."
+        },
+        {
+          "type": "text",
+          "id": "location",
+          "label": "Location",
+          "default": "Dubai"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "name": "Leila K.",
+            "text": "The espresso machine feels like a boutique café at home. The build and crema are perfect.",
+            "location": "Dubai"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "name": "Omar A.",
+            "text": "Fast shipping and the grinder is whisper-quiet. Highly recommend for serious brewers.",
+            "location": "Riyadh"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "name": "Sara M.",
+            "text": "The accessories are beautiful and functional. My morning ritual feels elevated.",
+            "location": "Cairo"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
