@@ -1,0 +1,77 @@
+﻿<header class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a class="logo" href="{{ routes.root_url }}">
+      {% if section.settings.logo_image %}
+        <img src="{{ section.settings.logo_image | image_url: width: 240 }}" alt="{{ shop.name }}" style="height:32px;width:auto;">
+      {% else %}
+        {{ section.settings.logo_text }}
+      {% endif %}
+    </a>
+
+    <nav class="nav-links">
+      {% if section.settings.menu != blank %}
+        {% for link in section.settings.menu.links %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endfor %}
+      {% else %}
+        <a href="#home">Home</a>
+        <a href="#shop">Shop</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      {% endif %}
+    </nav>
+
+    <div class="nav-icons">
+      <button aria-label="Search">
+        <i class="ph ph-magnifying-glass"></i>
+      </button>
+      <button aria-label="Cart">
+        <i class="ph ph-shopping-cart-simple"></i>
+      </button>
+      <button aria-label="Account">
+        <i class="ph ph-user"></i>
+      </button>
+    </div>
+
+    <button class="menu-toggle" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    {% if section.settings.menu != blank %}
+      {% for link in section.settings.menu.links %}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {% endfor %}
+    {% else %}
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    {% endif %}
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Logo image"
+    },
+    {
+      "type": "text",
+      "id": "logo_text",
+      "label": "Logo text",
+      "default": "Keyyef"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu"
+    }
+  ]
+}
+{% endschema %}

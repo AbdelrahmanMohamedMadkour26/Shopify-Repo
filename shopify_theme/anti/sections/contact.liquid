@@ -1,0 +1,82 @@
+﻿<section class="section contact" id="contact">
+  <div class="section-header">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.subtext }}</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-form">
+      {% form 'contact' %}
+        <label>
+          Name
+          <input type="text" name="contact[name]" placeholder="Your name" required>
+        </label>
+        <label>
+          Email
+          <input type="email" name="contact[email]" placeholder="you@example.com" required>
+        </label>
+        <label>
+          Message
+          <textarea rows="4" name="contact[body]" placeholder="Tell us about your coffee preferences"></textarea>
+        </label>
+        <button class="btn primary" type="submit">Send Message</button>
+      {% endform %}
+    </div>
+
+    {% if section.settings.map_url != blank %}
+      <div class="map-card">
+        <iframe
+          title="Keyyef Location"
+          src="{{ section.settings.map_url }}"
+          loading="lazy"
+        ></iframe>
+        <div class="map-info">
+          <h4>{{ section.settings.map_heading }}</h4>
+          <p>{{ section.settings.map_text }}</p>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Let’s Talk Coffee"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Our experts are here to guide your next purchase."
+    },
+    {
+      "type": "url",
+      "id": "map_url",
+      "label": "Map embed URL",
+      "default": "https://www.openstreetmap.org/export/embed.html?bbox=31.2237%2C30.0213%2C31.2397%2C30.0313&layer=mapnik"
+    },
+    {
+      "type": "text",
+      "id": "map_heading",
+      "label": "Map heading",
+      "default": "Keyyef Atelier"
+    },
+    {
+      "type": "text",
+      "id": "map_text",
+      "label": "Map text",
+      "default": "Visit our flagship café lounge in the heart of the city."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact"
+    }
+  ]
+}
+{% endschema %}

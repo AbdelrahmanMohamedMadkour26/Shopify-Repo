@@ -1,0 +1,37 @@
+﻿[
+  {
+    "name": "Theme settings",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_brown",
+        "label": "Primary brown",
+        "default": "#3e2723"
+      },
+      {
+        "type": "color",
+        "id": "color_beige",
+        "label": "Beige",
+        "default": "#f5f5dc"
+      },
+      {
+        "type": "color",
+        "id": "color_black",
+        "label": "Black",
+        "default": "#0f0f0f"
+      },
+      {
+        "type": "color",
+        "id": "color_gold",
+        "label": "Gold accent",
+        "default": "#c5a25b"
+      },
+      {
+        "type": "color",
+        "id": "color_caramel",
+        "label": "Caramel accent",
+        "default": "#b98b5a"
+      }
+    ]
+  }
+]
